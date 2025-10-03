@@ -52,20 +52,18 @@ class Aluno{
     }
 
     public function cadastrar($rm, $nome, $email, $cpf){
-        # criar uma variavel com a conulta SQL
+        
         $sql = "INSERT INTO aluno set rm = :r, nome = :n, email = :e, cpf = :c";
         
-        # se o metodo tem parametros, temos que usar o apelido para passar os valores 
-        # e chamar o metodo prepare do PDO
         $sql = $this->pdo->prepare($sql);
 
-        #para cada apelido, ligar com o valor do parametro passado
+        
         $sql-> bindValue(":r", $rm);
         $sql-> bindValue(":n", $nome);
         $sql-> bindValue(":e", $email);
         $sql-> bindValue(":c", $cpf);
 
-        #executar o comando
+        
         return $sql->execute();
     }
 
@@ -81,4 +79,5 @@ class Aluno{
 
 
 }
+
 
