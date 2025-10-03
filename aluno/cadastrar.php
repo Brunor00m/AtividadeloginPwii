@@ -2,26 +2,26 @@
 require_once 'Aluno.class.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $rm     = $_POST['rm'];
-    $nome   = $_POST['nome'];
-    $cpf    = $_POST['cpf'];
-    $email  = $_POST['email'];
-    $senha  = $_POST['senha']; 
+    $brunoRm     = $_POST['rm'];
+    $brunoNome   = $_POST['nome'];
+    $brunoCpf    = $_POST['cpf'];
+    $brunoEmail  = $_POST['email'];
+    $brunoSenha  = $_POST['senha']; 
 
-    $aluno = new Aluno();
+    $brunoAluno = new Aluno();
 
-    if ($aluno->conectar()) {
-        if ($aluno->consultar($email)) {
-            $mensagem = "E-mail já cadastrado!";
+    if ($brunoAluno->conectar()) {
+        if ($brunoAluno->consultar($brunoEmail)) {
+            $brunoMensagem = "E-mail já cadastrado!";
         } else {
-            if ($aluno->cadastrar($rm, $nome, $email, $cpf)) {
-                $mensagem = "Cadastro realizado com sucesso!";
+            if ($brunoAluno->cadastrar($brunoRm, $brunoNome, $brunoEmail, $brunoCpf)) {
+                $brunoMensagem = "Cadastro realizado com sucesso!";
             } else {
-                $mensagem = "Erro ao cadastrar.";
+                $brunoMensagem = "Erro ao cadastrar.";
             }
         }
     } else {
-        $mensagem = "Erro ao conectar no banco de dados.";
+        $brunoMensagem = "Erro ao conectar no banco de dados.";
     }
 }
 ?>
@@ -74,3 +74,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </body>
 </html>
+
